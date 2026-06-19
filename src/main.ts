@@ -4,16 +4,19 @@ import Aura from '@primeuix/themes/aura'
 
 import App from './App.vue'
 import router from './router'
-import { initAnalytics, trackPageView } from '@/lib/analytics'
 
 import 'primeicons/primeicons.css'
 import '@/assets/styles/main.css'
 
-initAnalytics()
+const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID
 
-router.afterEach((to) => {
-  trackPageView(to.fullPath)
-})
+if (import.meta.env.PROD && measurementId) {
+  router.afterEach((to) => {
+    window.gtag('config', measurementId, {
+      page_path: to.fullPath,
+    })
+  })
+}
 
 const app = createApp(App)
 
