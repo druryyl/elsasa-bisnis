@@ -36,6 +36,48 @@ npm run dev
 
 Open the URL shown in the terminal (typically `http://localhost:5173`) to view the site.
 
+## Google Analytics
+
+This site uses [Google Analytics 4](https://analytics.google.com/) (GA4) via the official `gtag.js` snippet. Analytics is loaded from application code (`src/lib/analytics.ts`), not hardcoded in `index.html`.
+
+### Configuration
+
+Set the measurement ID in an environment variable:
+
+```bash
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+For production builds, the value is read from `.env.production`. Copy `.env.example` if you need a starting point:
+
+```bash
+cp .env.example .env.production
+```
+
+### Where to place the Measurement ID
+
+| File | Purpose |
+| ---- | ------- |
+| `.env.production` | Used when running `npm run build` (committed default for this project) |
+| `.env.production.local` | Optional local override (ignored by git via `*.local`) |
+
+The ID is injected at build time through Vite's `import.meta.env.VITE_GA_MEASUREMENT_ID`.
+
+### Which environments enable analytics
+
+| Environment | Analytics |
+| ----------- | --------- |
+| `npm run dev` | Disabled |
+| `npm run build` / deployed production | Enabled when `VITE_GA_MEASUREMENT_ID` is set |
+| `npm run preview` | Enabled when built with a measurement ID |
+
+### How to disable analytics
+
+- **Development:** Analytics is always off; no action needed.
+- **Production:** Remove the variable, leave it empty, or delete `.env.production` before building. Page views are not sent when `VITE_GA_MEASUREMENT_ID` is unset.
+
+Route changes in the Vue SPA are tracked automatically via Vue Router (`page_view` events on each navigation).
+
 ## Build Production
 
 Create an optimized production build:
