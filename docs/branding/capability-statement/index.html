@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capability Statement — Elsasa Business Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       BRAND TOKENS
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      --navy:        #1D3461;
+      --navy-dark:   #152440;
+      --navy-pale:   #EDF1F8;
+      --gold:        #C9921E;
+      --gold-mid:    #E8B84B;
+      --gold-light:  #F2D98A;
+      --gold-pale:   #FBF6EC;
+      --gray-50:     #FAFAFA;
+      --gray-100:    #F4F4F5;
+      --gray-200:    #E4E4E7;
+      --gray-400:    #A1A1AA;
+      --gray-600:    #52525B;
+      --gray-700:    #3F3F46;
+      --gray-900:    #18181B;
+      --white:       #FFFFFF;
+      --font:        'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESET + PAGE SETUP
+       ═══════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @page { size: A4 portrait; margin: 0; }
+
+    html, body {
+      font-family: var(--font);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray-900);
+      background: #CBD5E1;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @media print {
+      html, body { background: white; }
+      .page + .page { margin-top: 0 !important; }
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      background: white;
+      overflow: hidden;
+      page-break-after: always;
+      margin: 0 auto;
+    }
+
+    .page + .page { margin-top: 12mm; }
+    .page:last-child { page-break-after: avoid; }
+
+
+    /* ═══════════════════════════════════════════════════════════
+       PAGE 1 — COVER
+       ═══════════════════════════════════════════════════════════ */
+    .cover { display: flex; flex-direction: column; }
+
+    .cover-topbar {
+      height: 10mm;
+      background: var(--navy);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .cover-topbar::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 35%;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .cover-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 28mm;
+      text-align: center;
+    }
+
+    .cover-logo {
+      height: 96px;
+      width: auto;
+      margin-bottom: 9mm;
+    }
+
+    .cover-divider {
+      width: 44mm;
+      height: 1.5px;
+      background: var(--gold);
+      margin: 0 auto 7mm;
+      opacity: 0.7;
+    }
+
+    .cover-doc-label {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 2.5mm;
+    }
+
+    .cover-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 10mm;
+    }
+
+    .cover-tagline-wrap {
+      max-width: 138mm;
+      margin: 0 auto 12mm;
+      text-align: left;
+      border-left: 3.5px solid var(--gold);
+      padding: 5mm 7mm;
+      background: var(--gold-pale);
+      border-radius: 0 5px 5px 0;
+    }
+
+    .cover-tagline {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--navy);
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    .cover-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.28em;
+      border: 1.5px solid var(--gold);
+      padding: 3px 15px;
+      border-radius: 2px;
+    }
+
+    .cover-bottombar {
+      height: 14mm;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 0 22mm;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .cover-bottombar .bl { font-size: 10px; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
+    .cover-bottombar .br { font-size: 10px; color: var(--gold-mid); letter-spacing: 0.06em; }
+
+
+    /* ═══════════════════════════════════════════════════════════
+       CONTENT PAGES (2–4)
+       ═══════════════════════════════════════════════════════════ */
+    .content { display: flex; flex-direction: column; }
+
+    /* Header */
+    .pg-hd {
+      height: 16mm;
+      border-bottom: 1.5px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      padding: 0 20mm;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .pg-hd-logo { height: 26px; width: auto; }
+
+    .pg-hd-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--gray-400);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    /* Body */
+    .pg-body {
+      flex: 1;
+      padding: 8mm 20mm 5mm;
+      overflow: hidden;
+    }
+
+    /* Footer */
+    .pg-ft {
+      height: 11mm;
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      padding: 0 20mm;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .pg-ft .ft-text {
+      font-size: 8px;
+      color: var(--gray-400);
+      letter-spacing: 0.05em;
+    }
+
+    .pg-ft .ft-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--navy);
+      opacity: 0.4;
+    }
+
+
+    /* ═══════════════════════════════════════════════════════════
+       SHARED SECTION LAYOUT
+       ═══════════════════════════════════════════════════════════ */
+    .s { margin-bottom: 6mm; }
+    .s:last-child { margin-bottom: 0; }
+
+    .s-label {
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 1.5mm;
+    }
+
+    .s-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 3mm;
+    }
+
+    .s-title.sm { font-size: 14px; }
+
+    .s-body {
+      font-size: 11.5px;
+      color: var(--gray-700);
+      line-height: 1.65;
+    }
+
+    .hr {
+      height: 1px;
+      background: var(--gray-200);
+      margin: 5.5mm 0;
+    }
+
+    /* ─── Callout ─────────────────────────────────────────────── */
+    .callout {
+      background: var(--navy-pale);
+      border-left: 3.5px solid var(--navy);
+      padding: 4.5mm 6mm;
+      border-radius: 0 5px 5px 0;
+      margin: 3mm 0 3.5mm;
+    }
+
+    .callout-hd {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2.5mm;
+    }
+
+    .callout ul { list-style: none; padding: 0; }
+
+    .callout ul li {
+      font-size: 10.5px;
+      color: var(--gray-700);
+      padding: 1.2mm 0 1.2mm 4.5mm;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .callout ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+
+    /* ─── Operational Truth Flow ──────────────────────────────── */
+    .ot {
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 6mm 5.5mm 5mm;
+      margin: 3mm 0 3.5mm;
+    }
+
+    .ot-hd {
+      font-size: 8px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 4.5mm;
+    }
+
+    .ot-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ot-step { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+    .ot-box {
+      width: 100%;
+      padding: 3.5mm 2mm;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 5px;
+      background: rgba(255,255,255,0.07);
+      text-align: center;
+    }
+
+    .ot-box.hi {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 18px rgba(201,146,30,0.45);
+    }
+
+    .ot-n {
+      display: block;
+      font-size: 7.5px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1mm;
+    }
+
+    .ot-box.hi .ot-n { color: rgba(255,255,255,0.65); }
+
+    .ot-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+    }
+
+    .ot-arr {
+      width: 5.5mm;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1mm;
+      color: rgba(255,255,255,0.28);
+    }
+
+    .ot-arr svg { width: 12px; height: 12px; stroke: currentColor; }
+
+    .ot-note {
+      text-align: center;
+      font-size: 8px;
+      font-style: italic;
+      color: rgba(255,255,255,0.45);
+      margin-top: 3.5mm;
+    }
+
+
+    /* ─── Industry Tags ───────────────────────────────────────── */
+    .tags { display: flex; gap: 2mm; flex-wrap: wrap; }
+
+    .tag {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--gold);
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-light);
+      padding: 1.5mm 4mm;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
+
+
+    /* ─── Service Cards ───────────────────────────────────────── */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5mm;
+    }
+
+    .svc-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-top: 3px solid var(--navy);
+      border-radius: 0 0 6px 6px;
+      padding: 5mm;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5mm;
+    }
+
+    .svc-ico {
+      width: 30px;
+      height: 30px;
+      background: var(--navy);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .svc-ico svg { width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .svc-t {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    .svc-d {
+      font-size: 9.5px;
+      color: var(--gray-600);
+      line-height: 1.55;
+    }
+
+
+    /* ─── Why Elsasa Cards ────────────────────────────────────── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+    }
+
+    .why-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 3mm;
+      padding: 4mm;
+      border: 1px solid var(--gray-200);
+      border-radius: 5px;
+      background: white;
+    }
+
+    .why-card.full { grid-column: span 2; }
+
+    .why-ico {
+      width: 28px;
+      height: 28px;
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-light);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .why-ico svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .why-t { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 1mm; }
+    .why-d { font-size: 9.5px; color: var(--gray-600); line-height: 1.5; }
+
+
+    /* ─── Expected Outcomes ───────────────────────────────────── */
+    .oc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5mm 8mm;
+    }
+
+    .oc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5mm;
+      padding: 2mm 0;
+    }
+
+    .oc-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .oc-text { font-size: 11px; color: var(--gray-700); line-height: 1.5; }
+
+
+    /* ─── Company Snapshot ────────────────────────────────────── */
+    .snap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+    }
+
+    .snap-item {
+      text-align: center;
+      padding: 5mm 2mm 4.5mm;
+      background: var(--navy-pale);
+      border-radius: 6px;
+      border-top: 3px solid var(--navy);
+    }
+
+    .snap-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 1.5mm;
+    }
+
+    .snap-val sup {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      vertical-align: super;
+    }
+
+    .snap-ico {
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5mm;
+    }
+
+    .snap-ico svg { width: 19px; height: 19px; stroke: var(--navy); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.65; }
+
+    .snap-lbl {
+      font-size: 8.5px;
+      font-weight: 600;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+    }
+
+
+    /* ─── Quote Block ─────────────────────────────────────────── */
+    .quote-block {
+      border: 1.5px solid var(--navy-pale);
+      border-left: 4px solid var(--navy);
+      border-radius: 0 6px 6px 0;
+      padding: 5.5mm 7mm;
+      background: var(--navy-pale);
+      margin: 3mm 0 3.5mm;
+    }
+
+    .quote-text {
+      font-size: 13.5px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.65;
+      margin-bottom: 3mm;
+    }
+
+    .quote-attr {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+
+    /* ─── Contact Section ─────────────────────────────────────── */
+    .contact {
+      background: var(--navy);
+      border-radius: 7px;
+      padding: 6mm 7mm;
+      display: flex;
+      align-items: center;
+      gap: 7mm;
+    }
+
+    .contact-logo-wrap {
+      background: white;
+      border-radius: 5px;
+      padding: 5px 9px;
+      flex-shrink: 0;
+    }
+
+    .contact-logo-wrap img { height: 34px; width: auto; display: block; }
+
+    .contact-sep {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3.5mm 7mm;
+      flex: 1;
+    }
+
+    .ci { display: flex; align-items: center; gap: 2.5mm; }
+
+    .ci svg { width: 11px; height: 11px; stroke: var(--gold-mid); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    .ci-t strong { display: block; font-size: 7px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.3mm; }
+    .ci-t span   { font-size: 9.5px; color: rgba(255,255,255,0.9); }
+
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page cover">
+
+  <div class="cover-topbar"></div>
+
+  <div class="cover-body">
+    <img src="__LOGO_DATA_URL__" alt="Elsasa Business Solutions" class="cover-logo">
+    <div class="cover-divider"></div>
+    <div class="cover-doc-label">Capability Statement</div>
+    <div class="cover-title">Elsasa Business<br>Solutions</div>
+
+    <div class="cover-tagline-wrap">
+      <div class="cover-tagline">
+        Membangun Sistem Operasional yang<br>
+        Menghasilkan Fakta, Bukan Sekadar Software.
+      </div>
+    </div>
+
+    <div class="cover-badge">2025</div>
+  </div>
+
+  <div class="cover-bottombar">
+    <span class="bl">Yogyakarta, Indonesia</span>
+    <span class="br">elsasa-company.pages.dev</span>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 2 — EXECUTIVE SUMMARY + OPERATIONAL TRUTH FRAMEWORK
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page content">
+
+  <div class="pg-hd">
+    <img src="__LOGO_DATA_URL__" alt="Elsasa" class="pg-hd-logo">
+    <span class="pg-hd-label">Capability Statement</span>
+  </div>
+
+  <div class="pg-body">
+
+    <!-- Executive Summary -->
+    <div class="s">
+      <div class="s-label">Mengapa Ini Penting</div>
+      <div class="s-title">Tantangan Operasional yang Sering Diabaikan</div>
+      <div class="s-body">
+        Banyak perusahaan telah menggunakan komputer dalam aktivitas sehari-hari. Namun, ketika manajemen membutuhkan informasi untuk mengambil keputusan, prosesnya masih lambat, tidak lengkap, bahkan bergantung pada laporan manual.
+      </div>
+
+      <div class="callout">
+        <div class="callout-hd">Akibatnya:</div>
+        <ul>
+          <li>Operasional berjalan tanpa visibilitas yang memadai.</li>
+          <li>Laporan baru tersedia ketika masalah sudah terjadi.</li>
+          <li>Dashboard tidak mencerminkan kondisi operasional sebenarnya.</li>
+          <li>Keputusan bisnis lebih banyak didasarkan pada asumsi daripada fakta.</li>
+        </ul>
+      </div>
+
+      <div class="s-body">
+        Masalah ini umumnya bukan disebabkan oleh kurangnya software, tetapi karena
+        <strong style="color:var(--navy)">proses operasional belum didigitalisasi secara utuh.</strong>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- Operational Truth Framework -->
+    <div class="s">
+      <div class="s-label">Filosofi Kami</div>
+      <div class="s-title">Operational Truth Framework</div>
+      <div class="s-body" style="margin-bottom:3mm">
+        Kami percaya bahwa setiap keputusan bisnis seharusnya didasarkan pada
+        <strong style="color:var(--navy)">Operational Truth</strong>—fakta yang dihasilkan langsung dari
+        aktivitas operasional perusahaan, bukan dari laporan yang disusun secara manual.
+      </div>
+
+      <div class="ot">
+        <div class="ot-hd">Alur dari Aktivitas Operasional Menuju Keputusan Bisnis</div>
+
+        <div class="ot-flow">
+
+          <div class="ot-step">
+            <div class="ot-box">
+              <span class="ot-n">01</span>
+              <div class="ot-lbl">Aktivitas<br>Operasional</div>
+            </div>
+          </div>
+
+          <div class="ot-arr">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="ot-step">
+            <div class="ot-box">
+              <span class="ot-n">02</span>
+              <div class="ot-lbl">Digitalisasi<br>Proses</div>
+            </div>
+          </div>
+
+          <div class="ot-arr">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="ot-step">
+            <div class="ot-box hi">
+              <span class="ot-n">03</span>
+              <div class="ot-lbl">Operational<br>Truth</div>
+            </div>
+          </div>
+
+          <div class="ot-arr">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="ot-step">
+            <div class="ot-box">
+              <span class="ot-n">04</span>
+              <div class="ot-lbl">Dashboard<br>&amp; KPI</div>
+            </div>
+          </div>
+
+          <div class="ot-arr">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+
+          <div class="ot-step">
+            <div class="ot-box">
+              <span class="ot-n">05</span>
+              <div class="ot-lbl">Keputusan<br>Bisnis</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ot-note">
+          Software bukan tujuan akhir — software adalah sarana untuk menghasilkan Operational Truth.
+        </div>
+      </div>
+
+      <div class="s-body">
+        Elsasa membantu perusahaan membangun sistem operasional yang menghasilkan data akurat, sehingga
+        manajemen dapat melihat kondisi perusahaan berdasarkan
+        <strong style="color:var(--navy)">fakta, bukan perkiraan.</strong>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- Focus Industries -->
+    <div class="s">
+      <div class="s-label">Fokus Industri</div>
+      <div class="tags">
+        <span class="tag">Distributor</span>
+        <span class="tag">Retail</span>
+        <span class="tag">Logistik</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pg-ft">
+    <span class="ft-text">Elsasa Business Solutions · Yogyakarta, Indonesia · elsasa-company.pages.dev</span>
+    <span class="ft-num">02</span>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 3 — SERVICES + WHY ELSASA
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page content">
+
+  <div class="pg-hd">
+    <img src="__LOGO_DATA_URL__" alt="Elsasa" class="pg-hd-logo">
+    <span class="pg-hd-label">Capability Statement</span>
+  </div>
+
+  <div class="pg-body">
+
+    <!-- Services -->
+    <div class="s">
+      <div class="s-label">Apa yang Kami Lakukan</div>
+      <div class="s-title">Layanan Kami</div>
+
+      <div class="svc-grid">
+
+        <div class="svc-card">
+          <div class="svc-ico">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </div>
+          <div class="svc-t">Operational Workflow Analysis</div>
+          <div class="svc-d">Menganalisis proses operasional untuk menemukan hambatan, pekerjaan manual, dan peluang digitalisasi.</div>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-ico">
+            <svg viewBox="0 0 24 24">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+          </div>
+          <div class="svc-t">Custom Business Application Development</div>
+          <div class="svc-d">Sistem yang mengikuti proses bisnis perusahaan, bukan memaksa perusahaan mengikuti software generik.</div>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-ico">
+            <svg viewBox="0 0 24 24">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+              <line x1="2" y1="20" x2="22" y2="20"/>
+            </svg>
+          </div>
+          <div class="svc-t">Dashboard &amp; KPI Development</div>
+          <div class="svc-d">Dashboard operasional yang membantu pemilik usaha dan manajemen mengambil keputusan lebih cepat dan tepat.</div>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-ico">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="svc-t">Long-Term Maintenance</div>
+          <div class="svc-d">Pendampingan jangka panjang agar sistem dapat berkembang seiring pertumbuhan perusahaan.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- Why Elsasa -->
+    <div class="s">
+      <div class="s-label">Keunggulan Kami</div>
+      <div class="s-title">Mengapa Memilih Elsasa</div>
+
+      <div class="why-grid">
+
+        <div class="why-card">
+          <div class="why-ico">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="why-t">Berorientasi pada Operasional</div>
+            <div class="why-d">Kami memahami proses bisnis sebelum menulis satu baris kode.</div>
+          </div>
+        </div>
+
+        <div class="why-card">
+          <div class="why-ico">
+            <svg viewBox="0 0 24 24">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="why-t">Solusi yang Dirancang Khusus</div>
+            <div class="why-d">Sistem sesuai kebutuhan unik perusahaan, bukan penyesuaian software generik.</div>
+          </div>
+        </div>
+
+        <div class="why-card">
+          <div class="why-ico">
+            <svg viewBox="0 0 24 24">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="why-t">Berpengalaman</div>
+            <div class="why-d">Lebih dari 25 tahun membangun sistem bisnis yang digunakan dalam operasional sehari-hari.</div>
+          </div>
+        </div>
+
+        <div class="why-card">
+          <div class="why-ico">
+            <svg viewBox="0 0 24 24">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="why-t">Pengembangan Lebih Efisien</div>
+            <div class="why-d">AI mempercepat pengembangan — implementasi lebih singkat tanpa mengorbankan kualitas desain.</div>
+          </div>
+        </div>
+
+        <div class="why-card full">
+          <div class="why-ico">
+            <svg viewBox="0 0 24 24">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </div>
+          <div>
+            <div class="why-t">Kemitraan Jangka Panjang</div>
+            <div class="why-d">Kami tidak percaya pada proyek "hit-and-run". Sistem bisnis harus terus berkembang mengikuti perubahan perusahaan.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pg-ft">
+    <span class="ft-text">Elsasa Business Solutions · Yogyakarta, Indonesia · elsasa-company.pages.dev</span>
+    <span class="ft-num">03</span>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 4 — OUTCOMES + ABOUT + SNAPSHOT + CONTACT
+     ═══════════════════════════════════════════════════════════════ -->
+<div class="page content">
+
+  <div class="pg-hd">
+    <img src="__LOGO_DATA_URL__" alt="Elsasa" class="pg-hd-logo">
+    <span class="pg-hd-label">Capability Statement</span>
+  </div>
+
+  <div class="pg-body">
+
+    <!-- Expected Outcomes -->
+    <div class="s">
+      <div class="s-label">Nilai yang Kami Berikan</div>
+      <div class="s-title">Hasil yang Diharapkan</div>
+
+      <div class="oc-grid">
+        <div class="oc-item">
+          <div class="oc-dot"></div>
+          <div class="oc-text">Visibilitas operasional yang lebih baik.</div>
+        </div>
+        <div class="oc-item">
+          <div class="oc-dot"></div>
+          <div class="oc-text">KPI yang dibangun dari data yang valid.</div>
+        </div>
+        <div class="oc-item">
+          <div class="oc-dot"></div>
+          <div class="oc-text">Proses bisnis yang lebih cepat dan efisien.</div>
+        </div>
+        <div class="oc-item">
+          <div class="oc-dot"></div>
+          <div class="oc-text">Dasar pengambilan keputusan yang lebih akurat.</div>
+        </div>
+        <div class="oc-item">
+          <div class="oc-dot"></div>
+          <div class="oc-text">Dashboard yang mencerminkan kondisi operasional sebenarnya.</div>
+        </div>
+        <div class="oc-item">
+          <div class="oc-dot"></div>
+          <div class="oc-text">Sistem yang dapat berkembang bersama bisnis.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- About Elsasa -->
+    <div class="s">
+      <div class="s-label">Tentang Kami</div>
+      <div class="s-title sm">Elsasa Business Solutions</div>
+
+      <div class="quote-block">
+        <div class="quote-text">
+          "Kami tidak sekadar membangun software. Kami membantu perusahaan menghasilkan
+          informasi yang dapat dipercaya sebagai dasar pengambilan keputusan."
+        </div>
+        <div class="quote-attr">Elsasa Business Solutions</div>
+      </div>
+
+      <div class="s-body">
+        Elsasa Business Solutions berfokus pada transformasi operasional melalui digitalisasi proses bisnis.
+        Keberhasilan sebuah proyek tidak diukur dari banyaknya fitur yang dibuat, tetapi dari seberapa besar
+        sistem tersebut membantu manajemen memahami kondisi bisnisnya secara nyata.
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- Company Snapshot -->
+    <div class="s">
+      <div class="s-label">Profil Singkat</div>
+
+      <div class="snap-grid">
+
+        <div class="snap-item">
+          <div class="snap-val">25<sup>+</sup></div>
+          <div class="snap-lbl">Tahun<br>Pengalaman</div>
+        </div>
+
+        <div class="snap-item">
+          <div class="snap-ico">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="snap-lbl">Digitalisasi<br>Operasional</div>
+        </div>
+
+        <div class="snap-item">
+          <div class="snap-ico">
+            <svg viewBox="0 0 24 24">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+          </div>
+          <div class="snap-lbl">Custom<br>Business System</div>
+        </div>
+
+        <div class="snap-item">
+          <div class="snap-ico">
+            <svg viewBox="0 0 24 24">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </div>
+          <div class="snap-lbl">Kemitraan<br>Jangka Panjang</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- Contact -->
+    <div class="s">
+      <div class="s-label">Hubungi Kami</div>
+
+      <div class="contact">
+        <div class="contact-logo-wrap">
+          <img src="__LOGO_DATA_URL__" alt="Elsasa">
+        </div>
+        <div class="contact-sep"></div>
+        <div class="contact-items">
+
+          <div class="ci">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <div class="ci-t">
+              <strong>WhatsApp</strong>
+              <span>+62 878-2221-1676</span>
+            </div>
+          </div>
+
+          <div class="ci">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <div class="ci-t">
+              <strong>Email</strong>
+              <span>elsasabisnis@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="ci">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <div class="ci-t">
+              <strong>Website</strong>
+              <span>elsasa-company.pages.dev</span>
+            </div>
+          </div>
+
+          <div class="ci">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div class="ci-t">
+              <strong>Lokasi</strong>
+              <span>Yogyakarta, Indonesia</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pg-ft">
+    <span class="ft-text">Elsasa Business Solutions · Yogyakarta, Indonesia · elsasa-company.pages.dev</span>
+    <span class="ft-num">04</span>
+  </div>
+
+</div>
+
+</body>
+</html>
