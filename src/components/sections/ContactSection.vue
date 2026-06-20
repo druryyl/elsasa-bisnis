@@ -1,27 +1,58 @@
 <script setup lang="ts">
-const whatsappMessage = encodeURIComponent(
-  'Halo Elsasa Business Solutions.\nSaya tertarik mengetahui layanan yang Anda tawarkan dan ingin berkonsultasi mengenai digitalisasi operasional perusahaan kami.\nTerima kasih.',
-)
-const whatsappUrl = `https://wa.me/6287822211676?text=${whatsappMessage}`
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  CONTACT_PHONE_TEL,
+  WHATSAPP_URL,
+  downloadCapabilityStatement,
+} from '@/lib/contact'
+import {
+  trackCapabilityStatementDownload,
+  trackConsultationClick,
+  trackWhatsappClick,
+} from '@/lib/analytics'
+
+function onConsultationClick(): void {
+  trackConsultationClick('contact')
+  trackWhatsappClick('contact')
+}
+
+function onWhatsappClick(): void {
+  trackWhatsappClick('contact')
+}
+
+function onDownloadCapability(): void {
+  trackCapabilityStatementDownload('contact')
+  downloadCapabilityStatement()
+}
 </script>
 
 <template>
   <section id="kontak" class="contact" aria-labelledby="contact-title">
     <div class="section-container">
-      <h2 id="contact-title" class="section-title">Hubungi Kami</h2>
+      <h2 id="contact-title" class="section-title">
+        Mari Diskusikan Tantangan Operasional Perusahaan Anda
+      </h2>
       <p class="section-subtitle">
-        Hubungi kami untuk mendiskusikan kebutuhan sistem operasional bisnis Anda.
+        Ceritakan proses operasional yang ingin Anda perbaiki. Kami siap membantu mengevaluasi
+        kebutuhan dan memberikan rekomendasi solusi yang sesuai.
       </p>
 
       <div class="contact__grid">
         <div class="contact__item">
           <div class="contact__icon" aria-hidden="true">
-            <i class="pi pi-envelope" />
+            <i class="pi pi-whatsapp" />
           </div>
           <div>
-            <h3 class="contact__label">Email</h3>
-            <a href="mailto:elsasabisnis@gmail.com" class="contact__value contact__link">
-              elsasabisnis@gmail.com
+            <h3 class="contact__label">WhatsApp</h3>
+            <a
+              :href="WHATSAPP_URL"
+              class="contact__value contact__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              @click="onWhatsappClick"
+            >
+              {{ CONTACT_PHONE }}
             </a>
           </div>
         </div>
@@ -32,50 +63,48 @@ const whatsappUrl = `https://wa.me/6287822211676?text=${whatsappMessage}`
           </div>
           <div>
             <h3 class="contact__label">Telepon</h3>
-            <a href="tel:+6287822211676" class="contact__value contact__link">
-              +62 878 2221 1676
+            <a :href="`tel:${CONTACT_PHONE_TEL}`" class="contact__value contact__link">
+              {{ CONTACT_PHONE }}
             </a>
           </div>
         </div>
 
         <div class="contact__item">
           <div class="contact__icon" aria-hidden="true">
-            <i class="pi pi-map-marker" />
+            <i class="pi pi-envelope" />
           </div>
           <div>
-            <h3 class="contact__label">Alamat</h3>
-            <p class="contact__value">Yogyakarta</p>
+            <h3 class="contact__label">Email</h3>
+            <a :href="`mailto:${CONTACT_EMAIL}`" class="contact__value contact__link">
+              {{ CONTACT_EMAIL }}
+            </a>
+          </div>
+        </div>
+
+        <div class="contact__item">
+          <div class="contact__icon" aria-hidden="true">
+            <i class="pi pi-download" />
+          </div>
+          <div>
+            <h3 class="contact__label">Capability Statement</h3>
+            <button type="button" class="contact__value contact__link contact__button" @click="onDownloadCapability">
+              Download Capability Statement
+            </button>
           </div>
         </div>
       </div>
 
-      <div class="contact__social">
-        <h3 class="contact__social-title">Media Sosial</h3>
-        <ul class="contact__social-list">
-          <li>
-            <span class="contact__social-link contact__social-link--placeholder">
-              <i class="pi pi-instagram" aria-hidden="true" />
-              Instagram
-            </span>
-          </li>
-          <li>
-            <span class="contact__social-link contact__social-link--placeholder">
-              <i class="pi pi-linkedin" aria-hidden="true" />
-              LinkedIn
-            </span>
-          </li>
-          <li>
-            <a
-              :href="whatsappUrl"
-              class="contact__social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="pi pi-whatsapp" aria-hidden="true" />
-              WhatsApp
-            </a>
-          </li>
-        </ul>
+      <div class="contact__cta">
+        <a
+          :href="WHATSAPP_URL"
+          class="btn btn--primary"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click="onConsultationClick"
+        >
+          <i class="pi pi-whatsapp" aria-hidden="true" />
+          Jadwalkan Konsultasi
+        </a>
       </div>
     </div>
   </section>
@@ -89,15 +118,14 @@ const whatsappUrl = `https://wa.me/6287822211676?text=${whatsappMessage}`
 
 .contact__grid {
   display: grid;
-  gap: 2rem;
-  max-width: 48rem;
-  margin: 0 auto 3rem;
+  gap: 1.5rem;
+  max-width: 52rem;
+  margin: 0 auto 2.5rem;
 }
 
 @media (min-width: 640px) {
   .contact__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -146,56 +174,24 @@ const whatsappUrl = `https://wa.me/6287822211676?text=${whatsappMessage}`
   text-decoration: underline;
 }
 
-.contact__social {
-  text-align: center;
-}
-
-.contact__social-title {
-  margin: 0 0 1.25rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.contact__social-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
+.contact__button {
+  background: none;
+  border: none;
   padding: 0;
-}
-
-.contact__social-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.625rem 1.25rem;
-  font-size: 0.9375rem;
+  font-family: inherit;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--color-navy);
-  border: 1px solid var(--color-border);
-  border-radius: 0.375rem;
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease;
+  cursor: pointer;
 }
 
-.contact__social-link--placeholder {
-  cursor: default;
-  color: var(--color-text-muted);
+.contact__button:hover {
+  color: var(--color-gold);
+  text-decoration: underline;
 }
 
-.contact__social-link--placeholder:hover {
-  border-color: var(--color-border);
-  background-color: transparent;
-}
-
-.contact__social-link:hover {
-  border-color: var(--color-gold);
-  background-color: var(--color-bg-subtle);
+.contact__cta {
+  display: flex;
+  justify-content: center;
 }
 </style>

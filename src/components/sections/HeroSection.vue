@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { useScrollTo } from '@/composables/useScrollTo'
+import { WHATSAPP_URL, downloadCapabilityStatement } from '@/lib/contact'
+import {
+  trackCapabilityStatementDownload,
+  trackConsultationClick,
+  trackWhatsappClick,
+} from '@/lib/analytics'
 import logoUrl from '@/assets/images/elsasa-logo.png'
 
-const { scrollToSection } = useScrollTo()
+function onConsultationClick(): void {
+  trackConsultationClick('hero')
+  trackWhatsappClick('hero')
+}
 
-function onDownloadCapability() {
-  const link = document.createElement('a')
-  link.href = '/capability-statement.pdf'
-  link.download = 'Elsasa-Capability-Statement.pdf'
-  link.rel = 'noopener'
-  link.click()
+function onDownloadCapability(): void {
+  trackCapabilityStatementDownload('hero')
+  downloadCapabilityStatement()
 }
 </script>
 
@@ -35,12 +40,19 @@ function onDownloadCapability() {
       </p>
 
       <div class="hero__actions">
-        <button type="button" class="btn btn--primary" @click="onDownloadCapability">
+        <a
+          :href="WHATSAPP_URL"
+          class="btn btn--primary"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click="onConsultationClick"
+        >
+          <i class="pi pi-whatsapp" aria-hidden="true" />
+          Jadwalkan Konsultasi
+        </a>
+        <button type="button" class="btn btn--secondary" @click="onDownloadCapability">
           <i class="pi pi-download" aria-hidden="true" />
           Download Capability Statement
-        </button>
-        <button type="button" class="btn btn--secondary" @click="scrollToSection('kontak')">
-          Hubungi Kami
         </button>
       </div>
     </div>
