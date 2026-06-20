@@ -5,7 +5,11 @@ import logoUrl from '@/assets/images/elsasa-logo.png'
 const { scrollToSection } = useScrollTo()
 
 function onDownloadCapability() {
-  // Placeholder — download functionality will be implemented in a future milestone
+  const link = document.createElement('a')
+  link.href = '/capability-statement.pdf'
+  link.download = 'Elsasa-Capability-Statement.pdf'
+  link.rel = 'noopener'
+  link.click()
 }
 </script>
 

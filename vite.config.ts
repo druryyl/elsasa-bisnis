@@ -31,10 +31,7 @@ export default defineConfig(({ mode }) => {
             return html
           }
 
-          return html.replace(
-            '<title>Elsasa Business Solutions</title>',
-            `<title>Elsasa Business Solutions</title>${googleTagSnippet(measurementId)}`,
-          )
+          return html.replace('</head>', `${googleTagSnippet(measurementId)}\n  </head>`)
         },
       },
     ],

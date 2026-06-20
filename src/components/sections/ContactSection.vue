@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const whatsappMessage = encodeURIComponent(
+  'Halo Elsasa Business Solutions.\nSaya tertarik mengetahui layanan yang Anda tawarkan dan ingin berkonsultasi mengenai digitalisasi operasional perusahaan kami.\nTerima kasih.',
+)
+const whatsappUrl = `https://wa.me/6287822211676?text=${whatsappMessage}`
+</script>
 
 <template>
   <section id="kontak" class="contact" aria-labelledby="contact-title">
@@ -15,8 +20,8 @@
           </div>
           <div>
             <h3 class="contact__label">Email</h3>
-            <a href="mailto:info@elsasa.id" class="contact__value contact__link">
-              info@elsasa.id
+            <a href="mailto:elsasabisnis@gmail.com" class="contact__value contact__link">
+              elsasabisnis@gmail.com
             </a>
           </div>
         </div>
@@ -27,7 +32,9 @@
           </div>
           <div>
             <h3 class="contact__label">Telepon</h3>
-            <p class="contact__value">Coming Soon</p>
+            <a href="tel:+6287822211676" class="contact__value contact__link">
+              +62 878 2221 1676
+            </a>
           </div>
         </div>
 
@@ -58,10 +65,15 @@
             </span>
           </li>
           <li>
-            <span class="contact__social-link contact__social-link--placeholder">
+            <a
+              :href="whatsappUrl"
+              class="contact__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i class="pi pi-whatsapp" aria-hidden="true" />
               WhatsApp
-            </span>
+            </a>
           </li>
         </ul>
       </div>
@@ -180,5 +192,10 @@
 .contact__social-link--placeholder:hover {
   border-color: var(--color-border);
   background-color: transparent;
+}
+
+.contact__social-link:hover {
+  border-color: var(--color-gold);
+  background-color: var(--color-bg-subtle);
 }
 </style>
